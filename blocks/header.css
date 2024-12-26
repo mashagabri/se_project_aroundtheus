@@ -1,0 +1,8 @@
+.header {
+  border-bottom: solid 1px #545454;
+}
+
+.header__logo {
+  margin-bottom: 41px;
+  display: block;
+}

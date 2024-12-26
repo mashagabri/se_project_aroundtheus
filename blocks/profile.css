@@ -1,0 +1,109 @@
+.profile {
+  display: flex;
+  align-items: center;
+  justify-items: start;
+  margin-top: 40px;
+  gap: 30px;
+}
+
+.profile__picture {
+  height: 120px;
+  width: 120px;
+  border-radius: 120px;
+}
+
+.profile__info {
+  display: grid;
+  grid-template-columns: auto 24px;
+  grid-template-areas:
+    "title button"
+    "description description";
+  column-gap: 18px;
+  row-gap: 7px;
+  align-items: baseline;
+}
+
+.profile__name {
+  margin: 0;
+  font-size: 42px;
+  font-weight: 500;
+  line-height: 48px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  grid-area: title;
+}
+
+.profile__edit-button {
+  display: block;
+  background: transparent url(../images/Edit\ Button.png) center no-repeat;
+  height: 24px;
+  width: 24px;
+  grid-area: button;
+  border: solid 1px white;
+}
+
+.profile__description {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 21.78px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  grid-area: description;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 373px;
+}
+
+.profile__add-button {
+  display: block;
+  margin-left: auto;
+  background: transparent url(../images/Add\ Button.png) center no-repeat;
+  height: 50px;
+  width: 150px;
+  border: solid 2px white;
+  border-radius: 2px;
+}
+
+/* this is for tab */
+@media screen and (max-width: 775px) {
+}
+
+/* this is for mobile */
+@media screen and (max-width: 480px) {
+  .profile {
+    flex-direction: column;
+  }
+  .profile__info {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .profile__description {
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16.94px;
+    text-align: center;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+  }
+  .profile__name {
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 26.63px;
+    text-align: center;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+  }
+
+  .profile__add-button {
+    width: 282px;
+    margin: 0;
+  }
+}

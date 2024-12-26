@@ -1,0 +1,44 @@
+*,
+* ::after,
+*::before {
+  margin: 0;
+  padding: 0;
+}
+
+.page {
+  background-color: black;
+  color: white;
+  font-family: "Inter", "Arial", "Helvetica", sans-serif;
+}
+
+.page__content {
+  margin: 45px 200px 60px;
+}
+
+.page__section {
+  max-width: 880px;
+  margin: 0 auto;
+  width: 100%;
+  position: relative;
+}
+
+/* this is for tab */
+@media screen and (max-width: 775px) {
+  .page__content {
+    margin: 45px 20px 60px;
+  }
+  .page__section {
+    max-width: 100%;
+  }
+}
+
+/* this is for mobile */
+@media screen and (max-width: 480px) {
+  .page__content {
+    margin-left: 50px;
+    margin-right: 50px;
+  }
+  .page__section {
+    max-width: 775px;
+  }
+}
