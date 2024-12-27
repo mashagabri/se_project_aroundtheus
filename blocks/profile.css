@@ -55,6 +55,7 @@
   white-space: nowrap;
   overflow: hidden;
   max-width: 373px;
+  margin: 0;
 }
 
 .profile__add-button {
@@ -68,11 +69,18 @@
 }
 
 /* this is for tab */
-@media screen and (max-width: 775px) {
+@media screen and (max-width: 786px) {
+  .profile__name {
+    font-size: 28px;
+  }
+  .profile__add-button {
+    width: 50px;
+    margin-right: 0;
+  }
 }
 
 /* this is for mobile */
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 620px) {
   .profile {
     flex-direction: column;
   }
@@ -105,5 +113,10 @@
   .profile__add-button {
     width: 282px;
     margin: 0;
+  }
+
+  .profile__edit-button {
+    height: 18px;
+    width: 18px;
   }
 }
