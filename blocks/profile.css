@@ -41,7 +41,7 @@
 
 .profile__edit-button {
   display: block;
-  background: transparent url(../images/Edit\ Button.svg) center no-repeat;
+  background: transparent url(../images/Edit-Button.svg) center no-repeat;
   height: 24px;
   width: 24px;
   grid-area: button;
@@ -71,16 +71,11 @@
 .profile__add-button {
   display: block;
   margin-left: auto;
-  background: transparent url(../images/Add\ Button.svg) center no-repeat;
-  /* background-image: url(../images/Add\ Button.svg);
-  background-color: transparent;
-  background-size: ;
-  background-repeat: no-repeat;
-  background-position: center center; */
+  background: transparent url(../images/cross_add.svg) center no-repeat;
   height: 50px;
-  width: 100%;
-  /* border: solid 2px white;
-  border-radius: 2px; */
+  width: 150px;
+  border: solid 2px white;
+  border-radius: 2px;
   cursor: pointer;
   border: none;
 }
@@ -95,7 +90,8 @@
     font-size: 28px;
   }
   .profile__add-button {
-    width: 50px;
+    /* width: 50px; */
+    width: 100%;
     margin-right: 0;
   }
 }
@@ -129,7 +125,8 @@
   .profile__add-button {
     width: 282px;
     margin: 0;
-    background-size: 100% 100%;
+    border: solid 2px white;
+    border-radius: 2px;
   }
 
   .profile__edit-button {
