@@ -1,18 +1,41 @@
 # Project 3: Around The U.S.
 
-### Overview
+### Project Description
 
-The project is about the page, where everyone can share their travel pictures and stories while traveling around the US.
-**Intro**
+Around the U.S. is a responsive web page with profile and a collection of favorite destinations.
 
-This project is made so all the elements are displayed correctly on popular screen sizes. It is made for desktop, tablet and mobile phone screen sizes.
+### Features:
+
+# Profile Section:
+
+Displays the user's avatar, name, and a short description.
+
+# Cards Section:
+
+A gallery of cards featuring scenic destinations, each with an image, title and a like button.
+
+# Interactive Elements:
+
+Buttons for editing the profile and adding new content.
+
+# Technologies Used:
+
+HTML5: For structuring the content.
+CSS3: For styling and creating a responsive layout.
+
+# Plans for Improvement
+
+Add Interactivity:
+Enable functionality for editing profile details.
+Allow users to add new cards.
+Add the ability to comment on cards.
 
 **Figma**
 
 - [Link to the project on Figma](https://www.figma.com/file/ii4xxsJ0ghevUOcssTlHZv/Sprint-3%3A-Around-the-US?node-id=0%3A1)
 
 **Images**
+Are exported directly from Figma.
 
-The way you'll do this at work is by exporting images directly from Figma — we recommend doing that to practice more. Don't forget to optimize them [here](https://tinypng.com/), so your project loads faster.
-
-Good luck and have fun!
+**Page**
+https://mashagabri.github.io/se_project_aroundtheus
