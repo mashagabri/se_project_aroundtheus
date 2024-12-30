@@ -32,15 +32,25 @@
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
   grid-area: title;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+
+  /* TODO give max width max-width: ;*/
 }
 
 .profile__edit-button {
   display: block;
-  background: transparent url(../images/Edit\ Button.png) center no-repeat;
+  background: transparent url(../images/Edit\ Button.svg) center no-repeat;
   height: 24px;
   width: 24px;
   grid-area: button;
   border: solid 1px white;
+  cursor: pointer;
+}
+
+.profile__edit-button:hover {
+  opacity: 0.6;
 }
 
 .profile__description {
@@ -61,11 +71,22 @@
 .profile__add-button {
   display: block;
   margin-left: auto;
-  background: transparent url(../images/Add\ Button.png) center no-repeat;
+  background: transparent url(../images/Add\ Button.svg) center no-repeat;
+  /* background-image: url(../images/Add\ Button.svg);
+  background-color: transparent;
+  background-size: ;
+  background-repeat: no-repeat;
+  background-position: center center; */
   height: 50px;
-  width: 150px;
-  border: solid 2px white;
-  border-radius: 2px;
+  width: 100%;
+  /* border: solid 2px white;
+  border-radius: 2px; */
+  cursor: pointer;
+  border: none;
+}
+
+.profile__add-button:hover {
+  opacity: 0.6;
 }
 
 /* this is for tab */
@@ -95,24 +116,20 @@
     width: 100%;
     text-align: center;
     font-size: 14px;
-    font-weight: 400;
     line-height: 16.94px;
     text-align: center;
-    text-underline-position: from-font;
-    text-decoration-skip-ink: none;
   }
+
   .profile__name {
     font-size: 22px;
-    font-weight: 500;
     line-height: 26.63px;
     text-align: center;
-    text-underline-position: from-font;
-    text-decoration-skip-ink: none;
   }
 
   .profile__add-button {
     width: 282px;
     margin: 0;
+    background-size: 100% 100%;
   }
 
   .profile__edit-button {
