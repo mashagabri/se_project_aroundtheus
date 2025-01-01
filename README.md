@@ -39,3 +39,6 @@ Are exported directly from Figma.
 
 **Page**
 https://mashagabri.github.io/se_project_aroundtheus
+
+**Video about project**
+https://drive.google.com/file/d/1jGE69RnfQoNEW21pfyd5WPEo9OG7Y-B_/view?usp=sharing
