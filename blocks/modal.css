@@ -6,15 +6,14 @@
   right: 0;
   z-index: 999;
   background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
   padding: 0 19px;
   display: none;
 }
 
 .modal__container_modal_opened {
   display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .modal__container {
@@ -78,7 +77,7 @@
   border-bottom: 1px rgba(0, 0, 0, 0.2) solid;
 }
 
-.modal__descirption {
+.modal__description {
   margin: 0 0 48px;
   width: 358px;
   height: 27px;
@@ -126,7 +125,7 @@
     margin: 0 0 30px;
   }
 
-  .modal__descirption {
+  .modal__description {
     max-width: 238px;
     margin: 0 0 45px;
   }

@@ -27,85 +27,20 @@
             alt="Avatar"
           />
           <div class="profile__info">
-            <h1 class="profile__name">Jacques Cousteau</h1>
+            <h1 class="profile__name" id="profile-name">Jacques Cousteau</h1>
             <button
               class="profile__edit-button"
               id="profile-edit-button"
               type="button"
             ></button>
-            <p class="profile__description">Explorer</p>
+            <p class="profile__description" id="profile-description">
+              Explorer
+            </p>
           </div>
           <button class="profile__add-button" type="button"></button>
         </section>
         <section class="cards page__section">
-          <ul class="cards__list">
-            <li class="card">
-              <img
-                class="card__image"
-                src="./images/card-images/yosemite.jpg"
-                alt="yosemite"
-              />
-              <div class="card__description">
-                <h2 class="card__title">Yosemite Valley</h2>
-                <button class="card__like-button" type="button"></button>
-              </div>
-            </li>
-            <li class="card">
-              <img
-                class="card__image"
-                src="./images/card-images/lake-louise.jpg"
-                alt="lake-louise"
-              />
-              <div class="card__description">
-                <h2 class="card__title">Lake Louise</h2>
-                <button class="card__like-button" type="button"></button>
-              </div>
-            </li>
-            <li class="card">
-              <img
-                class="card__image"
-                src="./images/card-images/bald-mountains.jpg"
-                alt="bald-mountains"
-              />
-              <div class="card__description">
-                <h2 class="card__title">Bald Mountains</h2>
-                <button class="card__like-button" type="button"></button>
-              </div>
-            </li>
-            <li class="card">
-              <img
-                class="card__image"
-                src="./images/card-images/latemar.jpg"
-                alt="latemar"
-              />
-              <div class="card__description">
-                <h2 class="card__title">Latemar</h2>
-                <button class="card__like-button" type="button"></button>
-              </div>
-            </li>
-            <li class="card">
-              <img
-                class="card__image"
-                src="./images/card-images/vanoise.jpg"
-                alt="vanoise"
-              />
-              <div class="card__description">
-                <h2 class="card__title">Vanoise National</h2>
-                <button class="card__like-button" type="button"></button>
-              </div>
-            </li>
-            <li class="card">
-              <img
-                class="card__image"
-                src="./images/card-images/lago.jpg"
-                alt="lago"
-              />
-              <div class="card__description">
-                <h2 class="card__title">Lago di Braies</h2>
-                <button class="card__like-button" type="button"></button>
-              </div>
-            </li>
-          </ul>
+          <ul class="cards__list" id="cards-list"></ul>
         </section>
       </main>
       <footer class="footer page__section">
@@ -113,16 +48,37 @@
       </footer>
     </div>
     <div class="modal" id="profile-edit-modal">
-      <div class="modal__container modal__container_modal_opened">
+      <div class="modal__container">
         <button class="modal__close" id="modal-close"></button>
         <p class="modal__heading">Edit Profile</p>
-        <form class="modal__form">
-          <input class="modal__name" type="text" name="name" />
-          <input class="modal__descirption" type="text" name="description" />
-          <button class="modal__save-button" type="button">Save</button>
+        <form class="modal__form" id="modal-form">
+          <input
+            class="modal__name"
+            id="modal-name"
+            type="text"
+            name="name"
+            placeholder="Name"
+          />
+          <input
+            class="modal__description"
+            id="modal-description"
+            type="text"
+            name="description"
+            placeholder="Description"
+          />
+          <button class="modal__save-button" type="submit">Save</button>
         </form>
       </div>
     </div>
+    <template id="card-template">
+      <li class="card">
+        <img class="card__image" src="" alt="" />
+        <div class="card__description">
+          <h2 class="card__title"></h2>
+          <button class="card__like-button" type="button"></button>
+        </div>
+      </li>
+    </template>
     <script src="./scripts/index.js"></script>
   </body>
 </html>

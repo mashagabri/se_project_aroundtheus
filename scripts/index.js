@@ -27,13 +27,49 @@ const initialCards = [
 
 const profileEditButton = document.querySelector("#profile-edit-button");
 const profileEditModal = document.querySelector("#profile-edit-modal");
+const modalEditCloseButton = profileEditModal.querySelector("#modal-close");
+const profileName = document.querySelector("#profile-name");
+const profileDescription = document.querySelector("#profile-description");
+const modalInputName = document.querySelector("#modal-name");
+const modalInputDescription = document.querySelector("#modal-description");
+const modalEditForm = profileEditModal.querySelector("#modal-form");
+const cardTemplate = document.querySelector("#card-template");
+const cardsList = document.querySelector("#cards-list");
+
+function modalClose() {
+  profileEditModal.classList.remove("modal__container_modal_opened");
+}
 
 profileEditButton.addEventListener("click", () => {
   profileEditModal.classList.add("modal__container_modal_opened");
+  modalInputName.value = profileName.innerText;
+  modalInputDescription.value = profileDescription.innerText;
 });
 
-const modalClose = document.querySelector("#modal-close");
-const modalContainer = document.querySelector(".modal__container");
-modalClose.addEventListener("click", () => {
-  modalContainer.classList.remove("modal__container_modal_opened");
+modalEditCloseButton.addEventListener("click", () => {
+  modalClose();
+});
+
+function handleModalEditFormSubmit(e) {
+  e.preventDefault();
+  profileName.innerText = modalInputName.value;
+  profileDescription.innerText = modalInputDescription.value;
+  modalClose();
+}
+
+modalEditForm.addEventListener("submit", handleModalEditFormSubmit);
+
+function getCardElement(cardData) {
+  const cardElement = cardTemplate.content.cloneNode(true);
+  const cardImage = cardElement.querySelector(".card__image");
+  cardImage.src = cardData.link;
+  cardImage.alt = cardData.name;
+  const cardTitle = cardElement.querySelector(".card__title");
+  cardTitle.textContent = cardData.name;
+  return cardElement;
+}
+
+initialCards.forEach((cardData) => {
+  const cardElement = getCardElement(cardData);
+  cardsList.appendChild(cardElement);
 });
