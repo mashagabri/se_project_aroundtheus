@@ -37,11 +37,11 @@ const cardTemplate = document.querySelector("#card-template");
 const cardsList = document.querySelector("#cards-list");
 
 function closeModal() {
-  profileEditModal.classList.remove("modal__modal_opened");
+  profileEditModal.classList.remove("modal_opened");
 }
 
 profileEditButton.addEventListener("click", () => {
-  profileEditModal.classList.add("modal__modal_opened");
+  profileEditModal.classList.add("modal_opened");
   modalInputName.value = profileName.innerText;
   modalInputDescription.value = profileDescription.innerText;
 });
