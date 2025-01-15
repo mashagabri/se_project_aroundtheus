@@ -3,6 +3,7 @@
   flex-direction: column;
   border-radius: 10px;
   overflow: hidden;
+  position: relative;
 }
 
 .card__image {
@@ -44,4 +45,23 @@
 
 .card__like-button:hover {
   opacity: 0.5;
+}
+
+.card__like-button_active {
+  background: transparent url(../images/Liked-Heart.svg) center no-repeat;
+}
+
+.card__delete-button {
+  background: transparent url(../images/Trash.svg) center no-repeat;
+  height: 18px;
+  width: 19.3px;
+  border: 0;
+  cursor: pointer;
+  position: absolute;
+  top: 18px;
+  right: 15px;
+}
+
+.card__delete-button:hover {
+  opacity: 0.6;
 }
