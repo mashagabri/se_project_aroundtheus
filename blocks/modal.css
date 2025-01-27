@@ -81,12 +81,33 @@
   border-bottom: 1px rgba(0, 0, 0, 0.2) solid;
 }
 
+.modal__input_type_error {
+  border-bottom: solid red 1px;
+}
+/*
 .modal__input:first-of-type {
   margin: 0 0 30px;
+} */
+
+.modal__error:last-of-type {
+  margin: 0 0 18px;
 }
 
-.modal__input:last-of-type {
-  margin: 0 0 48px;
+.modal__error {
+  color: red;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14.52px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  /* display: none; */
+  height: 30px;
+  padding-top: 5px;
+}
+
+.modal__error_visible {
+  display: inline;
 }
 
 .modal__save-button {
@@ -105,8 +126,15 @@
   text-decoration-skip-ink: none;
 }
 
-.modal__save-button:hover {
+.modal__save-button:hover:not(.modal__save-button_disabled) {
   opacity: 80%;
+}
+
+.modal__save-button_disabled {
+  background-color: #ffffff;
+  color: #000000;
+  opacity: 20%;
+  cursor: default;
 }
 
 .modal-preview-image {
