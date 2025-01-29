@@ -92,8 +92,10 @@ function handleCardAddModalFormSubmit(e) {
   e.preventDefault();
   const name = cardImageTitle.value;
   const link = cardImageUrl.value;
-  renderCard({ name, link });
-  closeModal(cardAddModal);
+  if (name && link) {
+    renderCard({ name, link });
+    closeModal(cardAddModal);
+  }
 }
 
 function handleProfileEditModalFormSubmit(e) {

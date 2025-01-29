@@ -10,7 +10,41 @@ const config = {
 
 // ----------------------Functions----------------------- //
 
-function setEventListeners() {}
+function setEventListeners(form, config) {
+  const { inputSelector } = config;
+  const { submitButtonSelector } = config;
+  const inputs = Array.from(form.querySelectorAll(inputSelector));
+  const button = form.querySelector(submitButtonSelector);
+  inputs.forEach((input) => {
+    input.addEventListener("input", () => {
+      if (inputs.every((input) => checkInputValidity(input))) {
+        enableButton(button, config);
+      } else {
+        disableButton(button, config);
+      }
+    });
+  });
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    //Left this field because when we open "create card" if user
+    //press the button create then he can create this card even with
+    //empty fields. He didn't click on any input.
+    let toggleButton = true;
+    inputs.forEach((input) => {
+      if (!checkInputValidity(input)) {
+        showError(input, config);
+        toggleButton = false;
+        disableButton(button, config);
+      }
+    });
+    console.log("submit" + toggleButton);
+    if (toggleButton) {
+      enableButton(button, config);
+      e.target.reset();
+    }
+  });
+}
 
 function checkInputValidity(input) {
   if (!input.validity.valid) {
@@ -61,37 +95,9 @@ function enableButton(button, config) {
 
 function enableValidation(config) {
   const { formSelector } = config;
-  const { inputSelector } = config;
-  const { submitButtonSelector } = config;
   const forms = [...document.querySelectorAll(formSelector)];
   forms.forEach((form) => {
-    const inputs = Array.from(form.querySelectorAll(inputSelector));
-    const button = form.querySelector(submitButtonSelector);
-    inputs.forEach((input) => {
-      input.addEventListener("input", () => {
-        if (inputs.every((input) => checkInputValidity(input))) {
-          enableButton(button, config);
-        } else {
-          disableButton(button, config);
-        }
-      });
-    });
-
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-      let toggleButton = true;
-      inputs.forEach((input) => {
-        if (!checkInputValidity(input)) {
-          showError(input, config);
-          toggleButton = false;
-          disableButton(button, config);
-        }
-      });
-      if (toggleButton) {
-        enableButton(button, config);
-        e.target.reset();
-      }
-    });
+    setEventListeners(form, config);
   });
 }
 
