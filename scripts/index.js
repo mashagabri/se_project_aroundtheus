@@ -52,25 +52,35 @@ const cardImageTitle = cardAddModalForm.querySelector(
   ".modal__input_type_title"
 );
 const cardImageUrl = cardAddModalForm.querySelector(".modal__input_type_url");
+const allModals = [cardAddModal, profileEditModal];
 
 // ----------------------- Functions ------------------------- //
+function addAllListenersToModals() {
+  allModals.forEach((modal) => {
+    modal.addEventListener("click", (event) => {
+      if (event.target === modal) {
+        closeModal(modal);
+      }
+    });
+  });
+}
+
+addAllListenersToModals();
+let handler;
+
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
+  document.removeEventListener("keydown", handler);
 }
 
 function openModal(modal) {
   modal.classList.add("modal_opened");
-  modal.addEventListener("click", (event) => {
-    if (event.target === modal) {
-      closeModal(modal);
-    }
-  });
-
-  document.addEventListener("keydown", (event) => {
+  handler = (event) => {
     if (event.key === "Escape") {
       closeModal(modal);
     }
-  });
+  };
+  document.addEventListener("keydown", handler);
 }
 
 function renderCard(cardData) {
@@ -132,9 +142,6 @@ profileEditButton.addEventListener("click", () => {
 });
 
 profileModalForm.addEventListener("submit", handleProfileEditModalFormSubmit);
-profileModalCloseButton.addEventListener("click", () =>
-  closeModal(profileEditModal)
-);
 
 // Card Event Listeners //
 
