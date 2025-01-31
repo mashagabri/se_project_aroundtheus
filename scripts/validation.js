@@ -18,7 +18,7 @@ function setEventListeners(form, config) {
   disableButton(button, config);
   inputs.forEach((input) => {
     input.addEventListener("input", () => {
-      if (inputs.every((input) => checkInputValidity(input))) {
+      if (inputs.every((input) => checkInputValidity(input, config))) {
         enableButton(button, config);
       } else {
         disableButton(button, config);
@@ -33,7 +33,7 @@ function setEventListeners(form, config) {
     //empty fields. He didn't click on any input.
     let toggleButton = true;
     inputs.forEach((input) => {
-      if (!checkInputValidity(input)) {
+      if (!checkInputValidity(input, config)) {
         showError(input, config);
         toggleButton = false;
         disableButton(button, config);
