@@ -15,6 +15,7 @@ function setEventListeners(form, config) {
   const { submitButtonSelector } = config;
   const inputs = Array.from(form.querySelectorAll(inputSelector));
   const button = form.querySelector(submitButtonSelector);
+  disableButton(button, config);
   inputs.forEach((input) => {
     input.addEventListener("input", () => {
       if (inputs.every((input) => checkInputValidity(input))) {
@@ -46,7 +47,7 @@ function setEventListeners(form, config) {
   });
 }
 
-function checkInputValidity(input) {
+function checkInputValidity(input, config) {
   if (!input.validity.valid) {
     showError(input, config);
     return false;

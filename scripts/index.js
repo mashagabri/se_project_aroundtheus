@@ -55,7 +55,7 @@ const cardImageUrl = cardAddModalForm.querySelector(".modal__input_type_url");
 const allModals = [cardAddModal, profileEditModal];
 
 // ----------------------- Functions ------------------------- //
-function addAllListenersToModals() {
+function addOverlayListners() {
   allModals.forEach((modal) => {
     modal.addEventListener("click", (event) => {
       if (event.target === modal) {
@@ -65,22 +65,26 @@ function addAllListenersToModals() {
   });
 }
 
-addAllListenersToModals();
-let handler;
+addOverlayListners();
+//handler variable that is carrying function which we added as listener
+let escapeHandler;
 
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
-  document.removeEventListener("keydown", handler);
+  //handler is the same memory which we use in addEventListener below
+  document.removeEventListener("keydown", escapeHandler);
 }
 
 function openModal(modal) {
   modal.classList.add("modal_opened");
-  handler = (event) => {
+  escapeHandler = (event) => {
+    //when we press any button we check which type is it
     if (event.key === "Escape") {
       closeModal(modal);
     }
   };
-  document.addEventListener("keydown", handler);
+  //we add listener when keydown is pressed
+  document.addEventListener("keydown", escapeHandler);
 }
 
 function renderCard(cardData) {
