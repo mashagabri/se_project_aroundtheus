@@ -47,12 +47,13 @@ const cardsList = document.querySelector("#cards-list");
 const cardAddModal = document.querySelector("#card-add-modal");
 const cardAddModalForm = document.forms["card-add-modal-form"];
 const cardAddButton = document.querySelector("#card-add-button");
+const cardViewModal = document.querySelector("#card-view-modal");
 const cardAddModalCloseButton = cardAddModal.querySelector(".modal__close");
 const cardImageTitle = cardAddModalForm.querySelector(
   ".modal__input_type_title"
 );
 const cardImageUrl = cardAddModalForm.querySelector(".modal__input_type_url");
-const allModals = [cardAddModal, profileEditModal];
+const allModals = [cardAddModal, profileEditModal, cardViewModal];
 
 // ----------------------- Functions ------------------------- //
 function addOverlayListners() {
