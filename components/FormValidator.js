@@ -79,7 +79,7 @@ export default class FormValidator {
         }, this);
         console.log("submit" + toggleButton);
         if (toggleButton) {
-          this._enableButton(button, config);
+          this._enableButton(button);
           e.target.reset();
         }
       },
