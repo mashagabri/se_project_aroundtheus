@@ -46,7 +46,7 @@ const profileEditButton = document.querySelector("#profile-edit-button");
 // ----------------------- Modal Variables ------------------------- //
 const previewImageModal = document.querySelector("#card-view-modal");
 const profileModalForm = document.forms["profile-modal-form"];
-const modalInputName = document.querySelector("[name='title']");
+const modalInputName = document.querySelector("[name='name']");
 const modalInputDescription = document.querySelector("[name='description']");
 const profileEditModal = document.querySelector("#profile-edit-modal");
 
@@ -114,6 +114,7 @@ function handleCardAddModalFormSubmit(e) {
   if (name && link) {
     renderCard({ name, link });
     closeModal(cardAddModal);
+    e.target.reset();
     formAddValidator.resetValidation();
   }
 }
@@ -121,6 +122,9 @@ function handleCardAddModalFormSubmit(e) {
 function handleProfileEditModalFormSubmit(e) {
   e.preventDefault();
   profileName.innerText = modalInputName.value;
+  const modalInputName2 = document.querySelector("[name='name']");
+
+  console.log(modalInputName2.value);
   profileDescription.innerText = modalInputDescription.value;
   closeModal(profileEditModal);
 }

@@ -80,7 +80,6 @@ export default class FormValidator {
         console.log("submit" + toggleButton);
         if (toggleButton) {
           this._enableButton(button);
-          e.target.reset();
         }
       },
       this
