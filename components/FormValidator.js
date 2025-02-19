@@ -8,6 +8,8 @@ export default class FormValidator {
     this._errorClass = config.errorClass;
     this._errorClassVisible = config.errorClassVisible;
     this._form = form;
+    this._inputs = Array.from(this._form.querySelectorAll(this._inputSelector));
+    this._button = this._form.querySelector(this._submitButtonSelector);
   }
 
   _showError(input) {
@@ -45,45 +47,43 @@ export default class FormValidator {
   }
 
   _setEventListeners() {
-    const inputs = Array.from(this._form.querySelectorAll(this._inputSelector));
-    const button = this._form.querySelector(this._submitButtonSelector);
-    this._disableButton(button);
-    inputs.forEach((input) => {
+    this._disableButton(this._button);
+    this._inputs.forEach((input) => {
       input.addEventListener("input", () => {
         if (!this._checkInputValidity(input)) {
           this._showError(input);
         } else {
           this._hideError(input);
         }
-        if (inputs.every((input) => this._checkInputValidity(input))) {
-          this._enableButton(button);
+        if (this._inputs.every((input) => this._checkInputValidity(input))) {
+          this._enableButton(this._button);
         } else {
-          this._disableButton(button);
+          this._disableButton(this._button);
         }
       });
     }, this);
-    this._form.addEventListener(
-      "submit",
-      (e) => {
-        e.preventDefault();
-        //Left this field because when we open "create card" if user
-        //press the button create then he can create this card even with
-        //empty fields. He didn't click on any input.
-        let toggleButton = true;
-        inputs.forEach((input) => {
-          if (!this._checkInputValidity(input)) {
-            this._showError(input);
-            toggleButton = false;
-            this._disableButton(button);
-          }
-        }, this);
-        console.log("submit" + toggleButton);
-        if (toggleButton) {
-          this._enableButton(button);
-        }
-      },
-      this
-    );
+    // this._form.addEventListener(
+    //   "submit",
+    //   (e) => {
+    //     e.preventDefault();
+    //     //Left this field because when we open "create card" if user
+    //     //press the button create then he can create this card even with
+    //     //empty fields. He didn't click on any input.
+    //     let toggleButton = true;
+    //     this._inputs.forEach((input) => {
+    //       if (!this._checkInputValidity(input)) {
+    //         this._showError(input);
+    //         toggleButton = false;
+    //         this._disableButton(this._button);
+    //       }
+    //     }, this);
+    //     console.log("submit" + toggleButton);
+    //     if (toggleButton) {
+    //       this._enableButton(this._button);
+    //     }
+    //   },
+    //   this
+    // );
   }
 
   enableValidation() {
@@ -94,9 +94,7 @@ export default class FormValidator {
   }
 
   resetValidation() {
-    const inputs = Array.from(this._form.querySelectorAll(this._inputSelector));
-    const button = this._form.querySelector(this._submitButtonSelector);
-    inputs.forEach((input) => this._hideError(input));
-    this._disableButton(button);
+    this._inputs.forEach((input) => this._hideError(input));
+    this._disableButton(this._button);
   }
 }

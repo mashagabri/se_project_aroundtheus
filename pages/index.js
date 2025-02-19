@@ -62,11 +62,19 @@ const cardImageTitle = cardAddModalForm.querySelector(
 const cardImageUrl = cardAddModalForm.querySelector(".modal__input_type_url");
 const allModals = [cardAddModal, profileEditModal, cardViewModal];
 
-const formEditValidator = new FormValidator(config, profileModalForm);
-const formAddValidator = new FormValidator(config, cardAddModalForm);
+const allValidators = {};
 
-formEditValidator.enableValidation();
-formAddValidator.enableValidation();
+function validateAllForms() {
+  const allForms = Array.from(document.querySelectorAll(config.formSelector));
+  allForms.forEach((form) => {
+    const formValidator = new FormValidator(config, form);
+    //get from form its id and put in the object by key(id) validator
+    allValidators[form.getAttribute("id")] = formValidator;
+    formValidator.enableValidation();
+  });
+}
+
+validateAllForms();
 
 // ----------------------- Functions ------------------------- //
 function addOverlayListners() {
@@ -101,10 +109,14 @@ function openModal(modal) {
   document.addEventListener("keydown", escapeHandler);
 }
 
-function renderCard(cardData) {
+function createCard(cardData) {
   const card = new Card(cardData, "#card-template", handleImageClick);
-  const cardElement = card.generateCard();
-  cardsList.prepend(cardElement);
+  return card.generateCard();
+}
+
+function renderCard(cardData, method = "prepend") {
+  const cardElement = createCard(cardData);
+  cardsList[method](cardElement);
 }
 
 function handleCardAddModalFormSubmit(e) {
@@ -115,16 +127,16 @@ function handleCardAddModalFormSubmit(e) {
     renderCard({ name, link });
     closeModal(cardAddModal);
     e.target.reset();
-    formAddValidator.resetValidation();
+    // allValidators[cardAddModalForm.id].resetValidation();
+    allValidators[cardAddModalForm.id]._disableButton(
+      cardAddModalForm.querySelector(config.submitButtonSelector)
+    );
   }
 }
 
 function handleProfileEditModalFormSubmit(e) {
   e.preventDefault();
   profileName.innerText = modalInputName.value;
-  const modalInputName2 = document.querySelector("[name='name']");
-
-  console.log(modalInputName2.value);
   profileDescription.innerText = modalInputDescription.value;
   closeModal(profileEditModal);
 }
@@ -134,7 +146,7 @@ function handleProfileEditModalFormSubmit(e) {
 profileEditButton.addEventListener("click", () => {
   modalInputName.value = profileName.innerText;
   modalInputDescription.value = profileDescription.innerText;
-  formEditValidator.resetValidation();
+  allValidators[profileModalForm.id].resetValidation();
   openModal(profileEditModal);
 });
 
@@ -161,10 +173,10 @@ const modalImage = document.querySelector(".modal__image");
 const modalTitle = document.querySelector(".modal__title");
 function handleImageClick(cardData) {
   // Устанавливаем ссылку на изображение
-  modalImage.src = cardData._link;
-  modalImage.alt = cardData._name;
+  modalImage.src = cardData.link;
+  modalImage.alt = cardData.name;
   // Устанавливаем заголовок
-  modalTitle.textContent = cardData._name;
+  modalTitle.textContent = cardData.name;
   // открывает модальное окно.
   openModal(previewImageModal);
 }

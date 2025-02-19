@@ -1,8 +1,8 @@
 export default class Card {
   constructor(data, cardSelector, handleImageClick) {
     // constructor({name,link}, cardSelector, handleImageClick) {
-    this._name = data.name;
-    this._link = data.link;
+    this.name = data.name;
+    this.link = data.link;
     // cardSelector is for choosing which template to use
     this._cardSelector = cardSelector;
     this._handleImageClick = handleImageClick;
@@ -49,9 +49,9 @@ export default class Card {
     this._deleteButton = this._element.querySelector(".card__delete-button");
 
     // Заполняем карточку данными
-    this._cardImage.src = this._link;
-    this._cardImage.alt = this._name;
-    this._cardTitle.textContent = this._name;
+    this._cardImage.src = this.link;
+    this._cardImage.alt = this.name;
+    this._cardTitle.textContent = this.name;
 
     // Добавляем обработчики событий
     this._setEventListeners();
