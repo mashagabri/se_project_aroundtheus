@@ -127,10 +127,10 @@ function handleCardAddModalFormSubmit(e) {
     renderCard({ name, link });
     closeModal(cardAddModal);
     e.target.reset();
-    // allValidators[cardAddModalForm.id].resetValidation();
-    allValidators[cardAddModalForm.id]._disableButton(
-      cardAddModalForm.querySelector(config.submitButtonSelector)
-    );
+    allValidators[cardAddModalForm.id].resetValidation();
+    // allValidators[cardAddModalForm.id].disableButton(
+    //   cardAddModalForm.querySelector(config.submitButtonSelector)
+    // );
   }
 }
 
