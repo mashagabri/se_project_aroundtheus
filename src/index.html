@@ -6,7 +6,6 @@
       name="viewport"
       content="width=device-width,initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
     />
-    <link rel="stylesheet" href="./pages/index.css" />
     <title>Around the U.S.</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
   </head>
@@ -15,7 +14,7 @@
       <header class="header page__section">
         <img
           class="header__logo"
-          src="./images/Around-the-US-logo.svg"
+          src="<%=require('./images/Around-the-US-logo.svg')%>"
           alt="Around the US logo"
         />
       </header>
@@ -23,7 +22,7 @@
         <section class="profile page__section">
           <img
             class="profile__picture"
-            src="./images/jacques-cousteau.png"
+            src="<%=require('./images/jacques-cousteau.png')%>"
             alt="Avatar"
           />
           <div class="profile__info">
@@ -131,7 +130,5 @@
         </div>
       </li>
     </template>
-
-    <script src="./pages/index.js" type="module" defer></script>
   </body>
 </html>
