@@ -15,6 +15,7 @@ const modalInputDescription = document.querySelector("[name='description']");
 const cardAddModalForm = document.forms["card-add-modal-form"];
 const cardAddButton = document.querySelector("#card-add-button");
 const allValidators = {};
+
 // ----------------------- Functions ------------------------- //
 function validateAllForms() {
   const allForms = Array.from(document.querySelectorAll(config.formSelector));
@@ -30,7 +31,7 @@ validateAllForms();
 // ---------------------------------------------------------------------- //
 const userInfo = new UserInfo({
   nameSelector: "#profile-name",
-  jobSelector: "#profile-description",
+  aboutSelector: "#profile-description",
 });
 
 // ---------------------------------------------------------------------- //

@@ -29,61 +29,40 @@ export default class FormValidator {
 
   _checkInputValidity(input) {
     if (!input.validity.valid) {
-      // this._showError(input);
       return false;
     }
-    // this._hideError(input);
     return true;
   }
 
-  disableButton(button) {
-    button.disabled = true;
-    button.classList.add(this._inactiveButtonClass);
+  _disableButton() {
+    console.log("TEST-DISABLE");
+
+    this._button.disabled = true;
+    this._button.classList.add(this._inactiveButtonClass);
   }
 
-  _enableButton(button) {
-    button.disabled = false;
-    button.classList.remove(this._inactiveButtonClass);
+  _enableButton() {
+    console.log("TEST-ENABLE");
+    this._button.disabled = false;
+    this._button.classList.remove(this._inactiveButtonClass);
   }
 
   _setEventListeners() {
-    this.disableButton(this._button);
-    this._inputs.forEach((input) => {
-      input.addEventListener("input", () => {
-        if (!this._checkInputValidity(input)) {
-          this._showError(input);
+    this._disableButton();
+    this._inputs.forEach((input1) => {
+      input1.addEventListener("input", () => {
+        if (!this._checkInputValidity(input1)) {
+          this._showError(input1);
         } else {
-          this._hideError(input);
+          this._hideError(input1);
         }
-        if (this._inputs.every((input) => this._checkInputValidity(input))) {
-          this._enableButton(this._button);
+        if (this._inputs.every((input2) => this._checkInputValidity(input2))) {
+          this._enableButton();
         } else {
-          this.disableButton(this._button);
+          this._disableButton();
         }
       });
     }, this);
-    // this._form.addEventListener(
-    //   "submit",
-    //   (e) => {
-    //     e.preventDefault();
-    //     //Left this field because when we open "create card" if user
-    //     //press the button create then he can create this card even with
-    //     //empty fields. He didn't click on any input.
-    //     let toggleButton = true;
-    //     this._inputs.forEach((input) => {
-    //       if (!this._checkInputValidity(input)) {
-    //         this._showError(input);
-    //         toggleButton = false;
-    //         this.disableButton(this._button);
-    //       }
-    //     }, this);
-    //     console.log("submit" + toggleButton);
-    //     if (toggleButton) {
-    //       this._enableButton(this._button);
-    //     }
-    //   },
-    //   this
-    // );
   }
 
   enableValidation() {
@@ -95,6 +74,6 @@ export default class FormValidator {
 
   resetValidation() {
     this._inputs.forEach((input) => this._hideError(input));
-    this.disableButton(this._button);
+    this._disableButton();
   }
 }

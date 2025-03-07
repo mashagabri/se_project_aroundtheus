@@ -29,8 +29,8 @@ export const config = {
   formSelector: ".modal__form",
   inputSelector: ".modal__input",
   submitButtonSelector: ".modal__save-button",
-  inactiveButtonClass: ".modal__save-button_disabled",
-  inputErrorClass: ".modal__input_type_error",
-  errorClass: ".modal__error",
-  errorClassVisible: ".modal__error_visible",
+  inactiveButtonClass: "modal__save-button_disabled",
+  inputErrorClass: "modal__input_type_error",
+  errorClass: "modal__error",
+  errorClassVisible: "modal__error_visible",
 };
