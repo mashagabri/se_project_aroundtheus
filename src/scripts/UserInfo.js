@@ -5,7 +5,6 @@ export default class UserInfo {
   }
 
   // Метод получения информации о пользователе
-
   getUserInfo() {
     return {
       name: this._nameElement.textContent,
