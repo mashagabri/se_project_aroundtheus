@@ -35,14 +35,11 @@ export default class FormValidator {
   }
 
   _disableButton() {
-    console.log("TEST-DISABLE");
-
     this._button.disabled = true;
     this._button.classList.add(this._inactiveButtonClass);
   }
 
   _enableButton() {
-    console.log("TEST-ENABLE");
     this._button.disabled = false;
     this._button.classList.remove(this._inactiveButtonClass);
   }
