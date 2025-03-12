@@ -7,10 +7,6 @@ export default class PopupWithForm extends Popup {
     this._handleFormSubmit = handleFormSubmit;
   }
 
-  close() {
-    super.close();
-  }
-
   //collects data from all the input fields and returns it as an object
   _getInputValues() {
     const listOfInputs = Array.from(this._popupForm.querySelectorAll("input"));

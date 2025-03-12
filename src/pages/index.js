@@ -64,6 +64,7 @@ const popupWithFormCard = new PopupWithForm("#card-add-modal", (formData) => {
   const cardData = { name: formData.title, link: formData.url };
   section.addItem(createCard(cardData));
   popupWithFormCard.close();
+  allValidators[cardAddModalForm.id].resetValidation();
 });
 popupWithFormCard.setEventListeners();
 
@@ -91,6 +92,5 @@ profileEditButton.addEventListener("click", () => {
 
 // Add Card Popup Listener
 cardAddButton.addEventListener("click", () => {
-  allValidators[cardAddModalForm.id].resetValidation();
   popupWithFormCard.open();
 });
