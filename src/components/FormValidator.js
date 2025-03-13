@@ -34,7 +34,7 @@ export default class FormValidator {
     return true;
   }
 
-  _disableButton() {
+  disableButton() {
     this._button.disabled = true;
     this._button.classList.add(this._inactiveButtonClass);
   }
@@ -45,7 +45,7 @@ export default class FormValidator {
   }
 
   _setEventListeners() {
-    this._disableButton();
+    this.disableButton();
     this._inputs.forEach((input1) => {
       input1.addEventListener("input", () => {
         if (!this._checkInputValidity(input1)) {
@@ -56,7 +56,7 @@ export default class FormValidator {
         if (this._inputs.every((input2) => this._checkInputValidity(input2))) {
           this._enableButton();
         } else {
-          this._disableButton();
+          this.disableButton();
         }
       });
     }, this);
@@ -75,6 +75,6 @@ export default class FormValidator {
 
   resetValidation() {
     this._inputs.forEach((input) => this._hideError(input));
-    this._disableButton();
+    this.disableButton();
   }
 }

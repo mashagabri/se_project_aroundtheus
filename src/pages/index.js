@@ -64,7 +64,7 @@ const popupWithFormCard = new PopupWithForm("#card-add-modal", (formData) => {
   const cardData = { name: formData.title, link: formData.url };
   section.addItem(createCard(cardData));
   popupWithFormCard.close();
-  allValidators[cardAddModalForm.id].resetValidation();
+  allValidators[cardAddModalForm.id].disableButton();
 });
 popupWithFormCard.setEventListeners();
 
