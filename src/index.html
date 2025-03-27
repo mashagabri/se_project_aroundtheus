@@ -21,10 +21,16 @@
       <main class="content">
         <section class="profile page__section">
           <img
+            id="profile-picture"
             class="profile__picture"
-            src="<%=require('./images/jacques-cousteau.png')%>"
+            src=""
             alt="Avatar"
           />
+          <button
+            class="avatar__edit-button"
+            id="avatar-edit-button"
+            type="button"
+          ></button>
           <div class="profile__info">
             <h1 class="profile__name" id="profile-name">Jacques Cousteau</h1>
             <button
@@ -120,6 +126,39 @@
         <p class="modal__title"></p>
       </div>
     </div>
+
+    <div class="modal" id="card-delete-modal">
+      <div class="modal__container">
+        <button class="modal__close"></button>
+        <p class="modal__heading">Are you sure?</p>
+        <form class="modal__form" id="card-delete-modal-form" novalidate>
+          <input id="input-id-card" type="hidden" name="id_card" required />
+          <button class="modal__save-button" type="submit">Yes</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="modal" id="edit-picture-modal">
+      <div class="modal__container">
+        <button class="modal__close"></button>
+        <p class="modal__heading">Change profile picture</p>
+        <form class="modal__form" id="edit-picture-modal-form" novalidate>
+          <input
+            id="input-picture"
+            class="modal__input modal__input_type_url"
+            type="text"
+            name="url"
+            placeholder="Picture link"
+            minlength="5"
+            maxlength="200"
+            required
+          />
+          <span class="modal__error" id="input-picture-error"></span>
+          <button class="modal__save-button" type="submit">Save</button>
+        </form>
+      </div>
+    </div>
+
     <template id="card-template">
       <li class="card" id="card">
         <img class="card__image" src="" alt="" />

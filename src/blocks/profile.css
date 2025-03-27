@@ -7,9 +7,37 @@
 }
 
 .profile__picture {
+  position: relative;
   height: 120px;
   width: 120px;
   border-radius: 120px;
+}
+
+.profile__picture:hover {
+  opacity: 20%;
+}
+
+.avatar__edit-button {
+  position: absolute;
+  background: transparent url(../images/edit-button-without-border.svg) center
+    no-repeat;
+  display: none;
+  height: 26px;
+  width: 26px;
+  cursor: pointer;
+  top: 47px;
+  left: 47px;
+  border: none;
+  outline: none;
+}
+
+.profile__picture:hover + .avatar__edit-button,
+.avatar__edit-button:hover {
+  display: block;
+}
+
+.profile__picture:has(+ .avatar__edit-button:hover) {
+  opacity: 20%;
 }
 
 .profile__info {
