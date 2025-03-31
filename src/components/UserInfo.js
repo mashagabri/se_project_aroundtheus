@@ -1,7 +1,8 @@
 export default class UserInfo {
-  constructor({ nameSelector, aboutSelector }) {
+  constructor({ nameSelector, aboutSelector, pictureSelector }) {
     this._nameElement = document.querySelector(nameSelector);
     this._aboutElement = document.querySelector(aboutSelector);
+    this._profilePicture = document.querySelector(pictureSelector);
   }
 
   // Метод получения информации о пользователе
@@ -14,6 +15,7 @@ export default class UserInfo {
 
   // Метод установки новой информации о пользователе
   setUserInfo(data) {
+    this._profilePicture.src = data.avatar;
     this._nameElement.innerText = data.name;
     this._aboutElement.innerText = data.about;
   }
