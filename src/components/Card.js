@@ -57,12 +57,14 @@ export default class Card {
 
   deleteCardFromInterface() {
     // Удаляем карточку из DOM
+    console.log(this);
     this._element.remove();
-    this._element = null;
+    // this._element = null;
   }
 
   generateCard() {
     this._element = this._getTemplate(); // Получаем шаблон карточки
+    console.log(this._element);
     this._cardImage = this._element.querySelector(".card__image");
     this._cardTitle = this._element.querySelector(".card__title");
     this._likeButton = this._element.querySelector(".card__like-button");

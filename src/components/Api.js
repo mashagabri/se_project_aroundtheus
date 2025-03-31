@@ -8,87 +8,53 @@ export default class Api {
     this.#baseUrl = options.baseUrl;
   }
 
-  async getInitialCards() {
-    return await fetch(`${this.#baseUrl}/cards`, {
+  async _request(endpoint, errorMessage, method = "GET", body = null) {
+    return fetch(`${this.#baseUrl}${endpoint}`, {
       headers: {
         authorization: this.#token,
+        "Content-Type": this.#contentType,
       },
+      method: method,
+      body: body,
     }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Error: ${res.status}`);
+      return this._checkResponse(res, errorMessage);
     });
-    // .catch;
+  }
+
+  async getInitialCards() {
+    return this._request("/cards", "cards weren't got");
   }
 
   async getUserInfo() {
-    return await fetch(`${this.#baseUrl}/users/me`, {
-      headers: {
-        authorization: this.#token,
-      },
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Error: ${res.status}`);
-    });
+    return this._request("/users/me", "user info wasn't got");
   }
 
   async editUserInfo(userName, userAbout) {
-    return await fetch(`${this.#baseUrl}/users/me`, {
-      headers: {
-        authorization: this.#token,
-        "Content-type": this.#contentType,
-      },
-      method: "PATCH",
-      body: JSON.stringify({
+    return this._request(
+      "/users/me",
+      "user info wasn't changed",
+      "PATCH",
+      JSON.stringify({
         name: userName,
         about: userAbout,
-      }),
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Error: ${res.status}`);
-    });
+      })
+    );
   }
 
   async addNewCard(cardName, cardLink) {
-    return await fetch(`${this.#baseUrl}/cards`, {
-      headers: {
-        authorization: this.#token,
-        "Content-type": this.#contentType,
-      },
-      method: "POST",
-      body: JSON.stringify({
+    return this._request(
+      "/cards",
+      "card wasn't added",
+      "POST",
+      JSON.stringify({
         name: cardName,
         link: cardLink,
-      }),
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Error ${res.status}`);
-    });
+      })
+    );
   }
 
   async deleteCard(idCard) {
-    return await fetch(
-      // "https://around-api.en.tripleten-services.com/v1/cards/" + idCard,
-      `${this.#baseUrl}/cards/${idCard}`,
-      {
-        headers: {
-          authorization: this.#token,
-        },
-        method: "DELETE",
-      }
-    ).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Error: ${res.status}: card wasn't deleted`);
-    });
+    return this._request(`/cards/${idCard}`, "card wasn't deleted", "DELETE");
   }
 
   getPromiseAll() {
@@ -96,48 +62,41 @@ export default class Api {
   }
 
   async addLike(idCard) {
-    return await fetch(`${this.#baseUrl}/cards/${idCard}/likes`, {
-      headers: {
-        authorization: this.#token,
-      },
-      method: "PUT",
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Error ${res.status}: like wasn't added`);
-    });
+    return this._request(`/cards/${idCard}/likes`, "like wasn't added", "PUT");
   }
 
   async removeLike(idCard) {
-    return await fetch(`${this.#baseUrl}/cards/${idCard}/likes`, {
-      headers: {
-        authorization: this.#token,
-      },
-      method: "DELETE",
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Error ${res.status}: like wasn't added`);
-    });
+    return this._request(
+      `/cards/${idCard}/likes`,
+      "like wasn't removed",
+      "DELETE"
+    );
   }
 
   async updateProfilePicture(linkAvatar) {
-    return await fetch(`${this.#baseUrl}/users/me/avatar`, {
-      headers: {
-        authorization: this.#token,
-        "Content-type": this.#contentType,
-      },
-      method: "PATCH",
-      body: JSON.stringify({
+    return this._request(
+      "/users/me/avatar",
+      "picture wasn't added",
+      "PATCH",
+      JSON.stringify({
         avatar: linkAvatar,
-      }),
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Error ${res.status}: picture wasn't added`);
+      })
+    );
+  }
+
+  _checkResponse(res, message) {
+    if (res.ok) {
+      return res.json();
+    }
+    const error = this.getError(res);
+    error.then((data) => {
+      return Promise.reject(
+        `Error ${res.status}: ${message}, ${JSON.stringify(data)}`
+      );
     });
+  }
+
+  getError(res) {
+    return res.json();
   }
 }
